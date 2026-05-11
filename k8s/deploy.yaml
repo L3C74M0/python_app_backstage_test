@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-app-backstage-test
+  labels:
+    app: python-app-backstage-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-app-backstage-test
+  template:
+    metadata:
+      labels:
+        app: python-app-backstage-test
+    spec:
+      containers:
+      - name: python-app-backstage-test
+        image: l3c74m0/python_app_backstage_test:v1
+        ports:
+        - containerPort: 5000
