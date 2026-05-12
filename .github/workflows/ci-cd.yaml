@@ -40,8 +40,8 @@ jobs:
         shell: bash
         run: |
           echo ${{ needs.ci.outputs.commit_id }}
-          pip3 install yq
-          yq -Yi '.image.tag = "${{ needs.ci.outputs.commit_id }}"' charts/python-app/values.yaml
+
+          sed -i 's/^  tag: .*/  tag: "${{ needs.ci.outputs.commit_id }}"/' charts/python-app/values.yaml
       -
         name: Commit and push changes
         uses: Endbug/add-and-commit@v9
