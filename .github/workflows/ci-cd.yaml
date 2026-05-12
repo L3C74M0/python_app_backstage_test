@@ -41,10 +41,11 @@ jobs:
       -
         name: Argocd app sync
         shell: bash
-        run: 
+        run: |
           argocd login argocd-server.argocd \
             --insecure \
             --grpc-web \
             --username admin \
             --password ${{ secrets.ARGOCD_PASSWORD }}
+            
           argocd app sync python-app
